@@ -1,1 +1,6 @@
-
+{
+    "name": "Иван",
+    "age": 30,
+    "isStudent": false,
+    "height": 175.5
+}
