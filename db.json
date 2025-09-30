@@ -1,6 +1,14 @@
 {
-    "name": "Иван",
-    "age": 30,
-    "isStudent": false,
-    "height": 175.5
+  "users": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "email": "john.doe@example.com"
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "email": "jane.smith@example.com"
+    }
+  ]
 }
