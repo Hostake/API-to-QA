@@ -1,6 +1,96 @@
 {
-  "posts": [
-    { "id": 1, "title": "Hello" },
-    { "id": 2, "title": "World" }
-  ]
+    "testSuite": "REST API Testing Suite",
+    "description": "Набор тестов для демонстрации навыков работы с REST Assured",
+    "tests": [
+        {
+            "testName": "Create User",
+            "method": "POST",
+            "endpoint": "/api/users",
+            "request": {
+                "headers": {
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer token123"
+                },
+                "body": {
+                    "name": "John Doe",
+                    "email": "john.doe@example.com",
+                    "password": "securepassword123"
+                }
+            },
+            "expectedResponse": {
+                "statusCode": 201,
+                "responseBody": {
+                    "message": "User created successfully",
+                    "user": {
+                        "id": "12345",
+                        "name": "John Doe",
+                        "email": "john.doe@example.com"
+                    }
+                }
+            }
+        },
+        {
+            "testName": "Get User Details",
+            "method": "GET",
+            "endpoint": "/api/users/12345",
+            "request": {
+                "headers": {
+                    "Authorization": "Bearer token123"
+                }
+            },
+            "expectedResponse": {
+                "statusCode": 200,
+                "responseBody": {
+                    "id": "12345",
+                    "name": "John Doe",
+                    "email": "john.doe@example.com",
+                    "createdAt": "2025-10-01T15:13:47Z"
+                }
+            }
+        },
+        {
+            "testName": "Update User Profile",
+            "method": "PUT",
+            "endpoint": "/api/users/12345",
+            "request": {
+                "headers": {
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer token123"
+                },
+                "body": {
+                    "name": "Johnathan Doe",
+                    "email": "johnathan.doe@example.com"
+                }
+            },
+            "expectedResponse": {
+                "statusCode": 200,
+                "responseBody": {
+                    "message": "Profile updated successfully",
+                    "user": {
+                        "id": "12345",
+                        "name": "Johnathan Doe",
+                        "email": "johnathan.doe@example.com"
+                    }
+                }
+            }
+        },
+        {
+            "testName": "Delete User",
+            "method": "DELETE",
+            "endpoint": "/api/users/12345",
+            "request": {
+                "headers": {
+                    "Authorization": "Bearer token123"
+                }
+            },
+            "expectedResponse": {
+                "statusCode": 204,
+                "responseBody": null
+            }
+        }
+    ],
+    "environment": {
+        "baseURL": "https://api.example.com",
+        "version": "v1"
+    }
 }
